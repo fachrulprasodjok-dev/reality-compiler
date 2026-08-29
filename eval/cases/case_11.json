@@ -1,0 +1,58 @@
+{
+  "id": "case_11",
+  "title": "Feasible post-freeze QA",
+  "sources": [
+    {
+      "id": "ENG1",
+      "text": "Code freeze is on 2026-10-01."
+    },
+    {
+      "id": "QA1",
+      "text": "QA completion is at least 3 days after code freeze."
+    },
+    {
+      "id": "M1",
+      "text": "Launch deadline is 2026-10-07 and QA must be complete by launch."
+    }
+  ],
+  "gold_constraints": [
+    {
+      "id": "C1",
+      "kind": "fixed_date",
+      "event": "freeze",
+      "date": "2026-10-01",
+      "source_id": "ENG1",
+      "description": "Freeze Oct 1"
+    },
+    {
+      "id": "C2",
+      "kind": "after_days",
+      "event": "qa_done",
+      "ref": "freeze",
+      "days": 3,
+      "source_id": "QA1",
+      "description": "QA +3 days"
+    },
+    {
+      "id": "C3",
+      "kind": "deadline",
+      "event": "launch",
+      "date": "2026-10-07",
+      "editable": true,
+      "source_id": "M1",
+      "description": "Launch by Oct 7"
+    },
+    {
+      "id": "C4",
+      "kind": "before_or_same",
+      "event": "qa_done",
+      "ref": "launch",
+      "source_id": "M1",
+      "description": "QA by launch"
+    }
+  ],
+  "gold": {
+    "status": "SAT",
+    "conflict_ids": []
+  }
+}

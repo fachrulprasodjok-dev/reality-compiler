@@ -1,0 +1,49 @@
+{
+  "id": "case_07",
+  "title": "Enough buffer after legal approval",
+  "sources": [
+    {
+      "id": "L1",
+      "text": "Legal approval completes on 2026-12-01."
+    },
+    {
+      "id": "P1",
+      "text": "Release must occur on or after legal approval."
+    },
+    {
+      "id": "M1",
+      "text": "Release deadline is 2026-12-05."
+    }
+  ],
+  "gold_constraints": [
+    {
+      "id": "C1",
+      "kind": "fixed_date",
+      "event": "legal_done",
+      "date": "2026-12-01",
+      "source_id": "L1",
+      "description": "Legal done Dec 1"
+    },
+    {
+      "id": "C2",
+      "kind": "before_or_same",
+      "event": "legal_done",
+      "ref": "release",
+      "source_id": "P1",
+      "description": "Legal before release"
+    },
+    {
+      "id": "C3",
+      "kind": "deadline",
+      "event": "release",
+      "date": "2026-12-05",
+      "editable": true,
+      "source_id": "M1",
+      "description": "Release by Dec 5"
+    }
+  ],
+  "gold": {
+    "status": "SAT",
+    "conflict_ids": []
+  }
+}

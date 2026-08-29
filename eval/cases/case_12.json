@@ -1,0 +1,81 @@
+{
+  "id": "case_12",
+  "title": "Long hidden dependency chain",
+  "sources": [
+    {
+      "id": "A1",
+      "text": "Data migration finishes on 2026-10-20."
+    },
+    {
+      "id": "A2",
+      "text": "Reconciliation needs at least 3 days after migration."
+    },
+    {
+      "id": "A3",
+      "text": "Business validation needs at least 2 days after reconciliation."
+    },
+    {
+      "id": "A4",
+      "text": "Launch requires business validation to be complete."
+    },
+    {
+      "id": "A5",
+      "text": "Committed launch deadline is 2026-10-24."
+    }
+  ],
+  "gold_constraints": [
+    {
+      "id": "C1",
+      "kind": "fixed_date",
+      "event": "migration_done",
+      "date": "2026-10-20",
+      "source_id": "A1",
+      "description": "Migration Oct 20"
+    },
+    {
+      "id": "C2",
+      "kind": "after_days",
+      "event": "recon_done",
+      "ref": "migration_done",
+      "days": 3,
+      "source_id": "A2",
+      "description": "Reconciliation +3 days"
+    },
+    {
+      "id": "C3",
+      "kind": "after_days",
+      "event": "validation_done",
+      "ref": "recon_done",
+      "days": 2,
+      "source_id": "A3",
+      "description": "Validation +2 days"
+    },
+    {
+      "id": "C4",
+      "kind": "before_or_same",
+      "event": "validation_done",
+      "ref": "launch",
+      "source_id": "A4",
+      "description": "Validation by launch"
+    },
+    {
+      "id": "C5",
+      "kind": "deadline",
+      "event": "launch",
+      "date": "2026-10-24",
+      "editable": true,
+      "source_id": "A5",
+      "description": "Launch by Oct 24"
+    }
+  ],
+  "gold": {
+    "status": "UNSAT",
+    "conflict_ids": [
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "C5"
+    ]
+  }
+}

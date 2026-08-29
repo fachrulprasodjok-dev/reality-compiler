@@ -1,0 +1,53 @@
+{
+  "id": "case_08",
+  "title": "Earliest marketing launch conflicts with executive deadline",
+  "sources": [
+    {
+      "id": "MKT1",
+      "text": "Campaign assets cannot be ready before 2026-12-12."
+    },
+    {
+      "id": "P1",
+      "text": "Product launch cannot happen before campaign assets are ready."
+    },
+    {
+      "id": "CEO1",
+      "text": "Executive commitment: launch no later than 2026-12-10."
+    }
+  ],
+  "gold_constraints": [
+    {
+      "id": "C1",
+      "kind": "earliest",
+      "event": "assets_done",
+      "date": "2026-12-12",
+      "source_id": "MKT1",
+      "description": "Assets no earlier than Dec 12"
+    },
+    {
+      "id": "C2",
+      "kind": "before_or_same",
+      "event": "assets_done",
+      "ref": "launch",
+      "source_id": "P1",
+      "description": "Assets by launch"
+    },
+    {
+      "id": "C3",
+      "kind": "deadline",
+      "event": "launch",
+      "date": "2026-12-10",
+      "editable": true,
+      "source_id": "CEO1",
+      "description": "Launch by Dec 10"
+    }
+  ],
+  "gold": {
+    "status": "UNSAT",
+    "conflict_ids": [
+      "C1",
+      "C2",
+      "C3"
+    ]
+  }
+}

@@ -1,0 +1,2 @@
+# Optional alternative solver adapter for later experiments.
+z3-solver==4.15.3.0

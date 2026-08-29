@@ -1,0 +1,53 @@
+{
+  "id": "case_04",
+  "title": "Security approval timing conflict",
+  "sources": [
+    {
+      "id": "M1",
+      "text": "Release must occur no later than 2026-10-15."
+    },
+    {
+      "id": "S1",
+      "text": "Security review is scheduled to complete on 2026-10-16."
+    },
+    {
+      "id": "P1",
+      "text": "Security approval must be complete before or on the release date."
+    }
+  ],
+  "gold_constraints": [
+    {
+      "id": "C1",
+      "kind": "deadline",
+      "event": "release",
+      "date": "2026-10-15",
+      "editable": true,
+      "source_id": "M1",
+      "description": "Release by Oct 15"
+    },
+    {
+      "id": "C2",
+      "kind": "fixed_date",
+      "event": "security_done",
+      "date": "2026-10-16",
+      "source_id": "S1",
+      "description": "Security done Oct 16"
+    },
+    {
+      "id": "C3",
+      "kind": "before_or_same",
+      "event": "security_done",
+      "ref": "release",
+      "source_id": "P1",
+      "description": "Security complete by release"
+    }
+  ],
+  "gold": {
+    "status": "UNSAT",
+    "conflict_ids": [
+      "C1",
+      "C2",
+      "C3"
+    ]
+  }
+}

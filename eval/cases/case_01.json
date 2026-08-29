@@ -1,0 +1,58 @@
+{
+  "id": "case_01",
+  "title": "Straightforward feasible launch",
+  "sources": [
+    {
+      "id": "M1",
+      "text": "Leadership set the launch deadline at 2026-09-25."
+    },
+    {
+      "id": "J1",
+      "text": "Code freeze is fixed for 2026-09-18."
+    },
+    {
+      "id": "P1",
+      "text": "QA completion must occur at least 5 days after code freeze."
+    }
+  ],
+  "gold_constraints": [
+    {
+      "id": "C1",
+      "kind": "deadline",
+      "event": "launch",
+      "date": "2026-09-25",
+      "editable": true,
+      "source_id": "M1",
+      "description": "Launch no later than Sep 25"
+    },
+    {
+      "id": "C2",
+      "kind": "fixed_date",
+      "event": "code_freeze",
+      "date": "2026-09-18",
+      "source_id": "J1",
+      "description": "Code freeze Sep 18"
+    },
+    {
+      "id": "C3",
+      "kind": "after_days",
+      "event": "qa_complete",
+      "ref": "code_freeze",
+      "days": 5,
+      "source_id": "P1",
+      "description": "QA completion at least 5 days after code freeze"
+    },
+    {
+      "id": "C4",
+      "kind": "before_or_same",
+      "event": "qa_complete",
+      "ref": "launch",
+      "source_id": "P1",
+      "description": "QA must complete by launch"
+    }
+  ],
+  "gold": {
+    "status": "SAT",
+    "conflict_ids": []
+  }
+}

@@ -1,0 +1,2 @@
+# Core reference benchmark intentionally uses Python standard library only.
+# Optional model/provider dependencies will be added separately and pinned.

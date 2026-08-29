@@ -1,0 +1,53 @@
+{
+  "id": "case_03",
+  "title": "Dependency lands after launch",
+  "sources": [
+    {
+      "id": "M1",
+      "text": "Target launch is no later than 2026-10-10."
+    },
+    {
+      "id": "V1",
+      "text": "Vendor migration completes on 2026-10-11."
+    },
+    {
+      "id": "P1",
+      "text": "Launch may happen only after vendor migration completes."
+    }
+  ],
+  "gold_constraints": [
+    {
+      "id": "C1",
+      "kind": "deadline",
+      "event": "launch",
+      "date": "2026-10-10",
+      "editable": true,
+      "source_id": "M1",
+      "description": "Launch by Oct 10"
+    },
+    {
+      "id": "C2",
+      "kind": "fixed_date",
+      "event": "vendor_done",
+      "date": "2026-10-11",
+      "source_id": "V1",
+      "description": "Vendor done Oct 11"
+    },
+    {
+      "id": "C3",
+      "kind": "before_or_same",
+      "event": "vendor_done",
+      "ref": "launch",
+      "source_id": "P1",
+      "description": "Vendor must finish by launch"
+    }
+  ],
+  "gold": {
+    "status": "UNSAT",
+    "conflict_ids": [
+      "C1",
+      "C2",
+      "C3"
+    ]
+  }
+}
