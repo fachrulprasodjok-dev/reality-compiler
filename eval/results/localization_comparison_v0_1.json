@@ -1,0 +1,273 @@
+{
+  "rows": [
+    {
+      "case_id": "case_02",
+      "gold_sources": [
+        "J1",
+        "M1",
+        "P1"
+      ],
+      "direct_llm_sources": [
+        "J1",
+        "M1",
+        "P1"
+      ],
+      "direct_llm_score": {
+        "exact": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "extra": 0,
+        "missing": 0
+      },
+      "reality_sources": [
+        "J1",
+        "M1",
+        "P1"
+      ],
+      "reality_score": {
+        "exact": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "extra": 0,
+        "missing": 0
+      }
+    },
+    {
+      "case_id": "case_03",
+      "gold_sources": [
+        "M1",
+        "P1",
+        "V1"
+      ],
+      "direct_llm_sources": [
+        "M1",
+        "P1",
+        "V1"
+      ],
+      "direct_llm_score": {
+        "exact": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "extra": 0,
+        "missing": 0
+      },
+      "reality_sources": [
+        "M1",
+        "P1",
+        "V1"
+      ],
+      "reality_score": {
+        "exact": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "extra": 0,
+        "missing": 0
+      }
+    },
+    {
+      "case_id": "case_04",
+      "gold_sources": [
+        "M1",
+        "P1",
+        "S1"
+      ],
+      "direct_llm_sources": [
+        "M1",
+        "P1",
+        "S1"
+      ],
+      "direct_llm_score": {
+        "exact": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "extra": 0,
+        "missing": 0
+      },
+      "reality_sources": [
+        "M1",
+        "P1",
+        "S1"
+      ],
+      "reality_score": {
+        "exact": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "extra": 0,
+        "missing": 0
+      }
+    },
+    {
+      "case_id": "case_06",
+      "gold_sources": [
+        "J1",
+        "M1",
+        "P1",
+        "P2"
+      ],
+      "direct_llm_sources": [
+        "J1",
+        "M1",
+        "P1",
+        "P2"
+      ],
+      "direct_llm_score": {
+        "exact": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "extra": 0,
+        "missing": 0
+      },
+      "reality_sources": [
+        "J1",
+        "M1",
+        "P1",
+        "P2"
+      ],
+      "reality_score": {
+        "exact": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "extra": 0,
+        "missing": 0
+      }
+    },
+    {
+      "case_id": "case_08",
+      "gold_sources": [
+        "CEO1",
+        "MKT1",
+        "P1"
+      ],
+      "direct_llm_sources": [
+        "CEO1",
+        "MKT1",
+        "P1"
+      ],
+      "direct_llm_score": {
+        "exact": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "extra": 0,
+        "missing": 0
+      },
+      "reality_sources": [
+        "CEO1",
+        "MKT1",
+        "P1"
+      ],
+      "reality_score": {
+        "exact": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "extra": 0,
+        "missing": 0
+      }
+    },
+    {
+      "case_id": "case_10",
+      "gold_sources": [
+        "M1",
+        "OPS1",
+        "P1"
+      ],
+      "direct_llm_sources": [
+        "M1",
+        "OPS1",
+        "P1"
+      ],
+      "direct_llm_score": {
+        "exact": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "extra": 0,
+        "missing": 0
+      },
+      "reality_sources": [
+        "M1",
+        "OPS1",
+        "P1"
+      ],
+      "reality_score": {
+        "exact": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "extra": 0,
+        "missing": 0
+      }
+    },
+    {
+      "case_id": "case_12",
+      "gold_sources": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5"
+      ],
+      "direct_llm_sources": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5"
+      ],
+      "direct_llm_score": {
+        "exact": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "extra": 0,
+        "missing": 0
+      },
+      "reality_sources": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5"
+      ],
+      "reality_score": {
+        "exact": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "extra": 0,
+        "missing": 0
+      }
+    }
+  ],
+  "summary": {
+    "direct_llm": {
+      "cases": 7,
+      "exact_matches": 7,
+      "exact_match_rate": 1.0,
+      "mean_precision": 1.0,
+      "mean_recall": 1.0,
+      "mean_f1": 1.0,
+      "total_extra_sources": 0,
+      "total_missing_sources": 0
+    },
+    "reality_compiler": {
+      "cases": 7,
+      "exact_matches": 7,
+      "exact_match_rate": 1.0,
+      "mean_precision": 1.0,
+      "mean_recall": 1.0,
+      "mean_f1": 1.0,
+      "total_extra_sources": 0,
+      "total_missing_sources": 0
+    }
+  }
+}
