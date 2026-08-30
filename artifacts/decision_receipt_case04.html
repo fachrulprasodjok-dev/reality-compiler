@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+>
+
+<title>
+Reality Compiler — Feasibility Decision
+</title>
+
+<style>
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        background: #f4f6f8;
+        color: #111827;
+        font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Arial,
+            sans-serif;
+    }
+
+    .page {
+        max-width: 920px;
+        margin: 48px auto;
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 20px;
+        padding: 48px;
+        box-shadow:
+            0 20px 50px rgba(0, 0, 0, 0.07);
+    }
+
+    .brand {
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        color: #475569;
+    }
+
+    h1 {
+        font-size: 34px;
+        line-height: 1.15;
+        margin: 12px 0 28px;
+        letter-spacing: -0.02em;
+    }
+
+    .status {
+        display: inline-block;
+        padding: 10px 16px;
+        border-radius: 999px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+    }
+
+    .unsat {
+        color: #991b1b;
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+    }
+
+    .sat {
+        color: #166534;
+        background: #f0fdf4;
+        border: 1px solid #bbf7d0;
+    }
+
+    .lead {
+        font-size: 20px;
+        line-height: 1.55;
+        margin: 24px 0 30px;
+        max-width: 780px;
+    }
+
+    .why {
+        font-size: 17px;
+        line-height: 1.6;
+        color: #334155;
+        margin: -8px 0 34px;
+        max-width: 800px;
+    }
+
+    section {
+        margin-top: 38px;
+        padding-top: 30px;
+        border-top: 1px solid #e5e7eb;
+    }
+
+    .eyebrow {
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        color: #64748b;
+        margin-bottom: 16px;
+    }
+
+    .evidence {
+        display: grid;
+        grid-template-columns: 62px 1fr;
+        gap: 14px;
+        padding: 16px 0;
+        border-bottom: 1px solid #f1f5f9;
+        line-height: 1.55;
+    }
+
+    .source-id {
+        font-weight: 800;
+        color: #2563eb;
+    }
+
+    .source-text {
+        color: #111827;
+    }
+
+    .core {
+        font-family:
+            ui-monospace,
+            SFMono-Regular,
+            Menlo,
+            Monaco,
+            Consolas,
+            monospace;
+        background: #f8fafc;
+        padding: 16px;
+        border-radius: 12px;
+        margin-top: 20px;
+        line-height: 1.55;
+    }
+
+    .core strong {
+        font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Arial,
+            sans-serif;
+    }
+
+    .repair {
+        font-size: 22px;
+        font-weight: 750;
+        line-height: 1.45;
+        padding: 22px;
+        background: #eff6ff;
+        border-left: 4px solid #2563eb;
+        border-radius: 10px;
+    }
+
+    .minimal-note {
+        margin-top: 14px;
+        font-size: 14px;
+        line-height: 1.55;
+        color: #475569;
+    }
+
+    .verified {
+        margin-top: 22px;
+        font-weight: 800;
+        color: #166534;
+        letter-spacing: 0.01em;
+    }
+
+    .verification-copy {
+        line-height: 1.55;
+        margin-top: 14px;
+    }
+
+    .boundary {
+        font-size: 14px;
+        line-height: 1.7;
+        color: #475569;
+    }
+
+    .human-decision {
+        margin-top: 20px;
+    }
+
+    .footer {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid #e5e7eb;
+        font-size: 12px;
+        line-height: 1.6;
+        color: #64748b;
+    }
+
+    @media (max-width: 760px) {
+        .page {
+            margin: 0;
+            border-radius: 0;
+            border-left: 0;
+            border-right: 0;
+            padding: 28px 22px;
+        }
+
+        h1 {
+            font-size: 29px;
+        }
+
+        .lead {
+            font-size: 18px;
+        }
+
+        .repair {
+            font-size: 19px;
+        }
+
+        .evidence {
+            grid-template-columns: 48px 1fr;
+        }
+    }
+    
+</style>
+
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="brand">
+        REALITY COMPILER
+    </div>
+
+    <h1>
+        Feasibility Decision
+    </h1>
+
+    <div class="status unsat">
+        NOT FEASIBLE
+    </div>
+
+    <div class="lead">
+        The commitments represented from the supplied evidence cannot all be satisfied simultaneously.
+    </div>
+
+    
+        <div class="why">
+          <strong>Why:</strong>
+          Release is committed by 15 Oct 2026, but required security approval cannot exist until the security review completes on 16 Oct 2026.
+        </div>
+        
+
+    
+        <section>
+          <div class="eyebrow">
+            CONFLICT EVIDENCE
+          </div>
+
+          <div class="evidence"><div class="source-id">M1</div><div class="source-text">Release must occur no later than 2026-10-15.</div></div><div class="evidence"><div class="source-id">S1</div><div class="source-text">Security review is scheduled to complete on 2026-10-16.</div></div><div class="evidence"><div class="source-id">P1</div><div class="source-text">Release policy: completing the scheduled security review constitutes security approval, and security approval must be complete before or on the release date.</div></div>
+
+          <div class="core">
+            <strong>
+              Verification trace
+            </strong>
+            <br>
+            Constraint core:
+            C1 · C2 · C4
+          </div>
+        </section>
+        
+
+    
+        <section>
+          <div class="eyebrow">
+            MINIMAL VERIFIED REPAIR
+          </div>
+
+          <div class="repair">
+            Move release deadline from 2026-10-15 to at least 2026-10-16
+          </div>
+
+          
+            <div class="minimal-note">
+              Boundary-minimal: no smaller date adjustment on this selected commitment and direction restores feasibility.
+            </div>
+            
+
+          <div class="verified">
+            AFTER REPAIR: FEASIBLE — SAT
+          </div>
+
+          <p class="verification-copy">
+            The full constraint system was re-solved after applying the change; the repaired system is SAT.
+          </p>
+        </section>
+        
+
+    <section>
+
+        <div class="eyebrow">
+            DECISION BOUNDARY
+        </div>
+
+        <div class="boundary">
+
+            Reality Compiler verifies the formal
+            constraints extracted from the supplied
+            evidence.
+
+            It does not guarantee that every
+            real-world fact or organizational
+            intention was captured correctly.
+
+            <div class="human-decision">
+                <strong>
+                    Human decision required:
+                </strong>
+
+                accept, reject, or renegotiate any
+                proposed commitment change.
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="footer">
+
+        Case:
+        case_04
+
+        &nbsp; · &nbsp;
+
+        Model-backed extraction:
+        gpt-5.6-luna
+
+        &nbsp; · &nbsp;
+
+        Formal engine verified after extraction
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
