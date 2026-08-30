@@ -136,6 +136,31 @@ Allowed constraint kinds:
    kind = before_or_same
    event = qa_complete
    ref = launch
+6. same_event
+   Meaning:
+   two different event names explicitly refer to the same
+   organizational occurrence or milestone.
+
+   Use this ONLY when the source explicitly states semantic identity,
+   equivalence, or that completing one event constitutes another event.
+
+   Example:
+   "Completing the scheduled security review constitutes
+   security approval."
+   ->
+   kind = same_event
+   event = security_approval
+   ref = security_review_complete
+
+   Example:
+   "Final business sign-off is the same event as executive approval."
+   ->
+   kind = same_event
+   event = business_signoff
+   ref = executive_approval
+
+   Do not use same_event merely because two events are related,
+   ordered, dependent, or likely to happen together.
 
 Important rules:
 
@@ -148,6 +173,17 @@ Important rules:
   "high risk", or opinions unless it creates a formal constraint.
 - Never infer a date, duration, dependency, or policy that is not stated.
 - If a field does not apply, return null for that field.
+- Preserve explicit semantic identity.
+  If the evidence explicitly says that one named event constitutes,
+  equals, means, or is the same occurrence as another named event,
+  represent that relationship using same_event unless both facts
+  already intentionally use the exact same event symbol.
+
+- Before returning, check every compound source for explicit
+  equivalence or constitutive relationships and ensure that each
+  material relationship is represented formally.
+
+- Do not infer same_event from similarity alone.
 """
 
 

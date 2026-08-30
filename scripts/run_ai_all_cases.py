@@ -139,7 +139,15 @@ def main():
 
     print(
         "\n=== REALITY COMPILER "
-        "FROZEN EVALUATION ==="
+        "MODEL-BACKED EVALUATION ==="
+    )
+
+    print(
+        "Extraction: model-backed / probabilistic"
+    )
+
+    print(
+        "Formal engine: deterministic after extraction"
     )
 
     print(
