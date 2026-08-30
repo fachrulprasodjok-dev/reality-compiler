@@ -1,0 +1,63 @@
+{
+  "id": "case_02",
+  "title": "Challenge: green project but impossible QA window",
+  "sources": [
+    {
+      "id": "M1",
+      "text": "CEO: Apollo is green and must launch no later than 2026-09-30."
+    },
+    {
+      "id": "J1",
+      "text": "Engineering committed to code freeze on 2026-09-25."
+    },
+    {
+      "id": "P1",
+      "text": "Release policy: QA completes no earlier than 7 days after code freeze and must finish before launch."
+    }
+  ],
+  "gold_constraints": [
+    {
+      "id": "C1",
+      "kind": "deadline",
+      "event": "launch",
+      "date": "2026-09-30",
+      "editable": true,
+      "source_id": "M1",
+      "description": "Launch by Sep 30"
+    },
+    {
+      "id": "C2",
+      "kind": "fixed_date",
+      "event": "code_freeze",
+      "date": "2026-09-25",
+      "source_id": "J1",
+      "description": "Code freeze Sep 25"
+    },
+    {
+      "id": "C3",
+      "kind": "after_days",
+      "event": "qa_complete",
+      "ref": "code_freeze",
+      "days": 7,
+      "source_id": "P1",
+      "description": "QA completes 7+ days after freeze"
+    },
+    {
+      "id": "C4",
+      "kind": "before_or_same",
+      "event": "qa_complete",
+      "ref": "launch",
+      "source_id": "P1",
+      "description": "QA complete by launch"
+    }
+  ],
+  "gold": {
+    "status": "UNSAT",
+    "conflict_ids": [
+      "C1",
+      "C2",
+      "C3",
+      "C4"
+    ]
+  }
+}

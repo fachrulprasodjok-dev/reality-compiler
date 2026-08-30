@@ -1,0 +1,53 @@
+{
+  "id": "case_10",
+  "title": "Cutover rehearsal too late",
+  "sources": [
+    {
+      "id": "OPS1",
+      "text": "Cutover rehearsal is fixed for 2026-09-18."
+    },
+    {
+      "id": "P1",
+      "text": "Production launch can only occur after cutover rehearsal."
+    },
+    {
+      "id": "M1",
+      "text": "Production launch deadline is 2026-09-17."
+    }
+  ],
+  "gold_constraints": [
+    {
+      "id": "C1",
+      "kind": "fixed_date",
+      "event": "rehearsal",
+      "date": "2026-09-18",
+      "source_id": "OPS1",
+      "description": "Rehearsal Sep 18"
+    },
+    {
+      "id": "C2",
+      "kind": "before_or_same",
+      "event": "rehearsal",
+      "ref": "launch",
+      "source_id": "P1",
+      "description": "Rehearsal by launch"
+    },
+    {
+      "id": "C3",
+      "kind": "deadline",
+      "event": "launch",
+      "date": "2026-09-17",
+      "editable": true,
+      "source_id": "M1",
+      "description": "Launch by Sep 17"
+    }
+  ],
+  "gold": {
+    "status": "UNSAT",
+    "conflict_ids": [
+      "C1",
+      "C2",
+      "C3"
+    ]
+  }
+}

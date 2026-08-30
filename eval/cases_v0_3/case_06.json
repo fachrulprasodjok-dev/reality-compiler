@@ -1,0 +1,77 @@
+{
+  "id": "case_06",
+  "title": "Two-stage testing chain impossible",
+  "sources": [
+    {
+      "id": "J1",
+      "text": "Feature complete is fixed on 2026-11-20."
+    },
+    {
+      "id": "P1",
+      "text": "Integration testing needs at least 4 days after feature complete."
+    },
+    {
+      "id": "P2",
+      "text": "Regression completion needs at least 4 days after integration testing completes."
+    },
+    {
+      "id": "M1",
+      "text": "Launch deadline is 2026-11-26 and requires regression completion."
+    }
+  ],
+  "gold_constraints": [
+    {
+      "id": "C1",
+      "kind": "fixed_date",
+      "event": "feature_done",
+      "date": "2026-11-20",
+      "source_id": "J1",
+      "description": "Feature done Nov 20"
+    },
+    {
+      "id": "C2",
+      "kind": "after_days",
+      "event": "integration_done",
+      "ref": "feature_done",
+      "days": 4,
+      "source_id": "P1",
+      "description": "Integration +4 days"
+    },
+    {
+      "id": "C3",
+      "kind": "after_days",
+      "event": "regression_done",
+      "ref": "integration_done",
+      "days": 4,
+      "source_id": "P2",
+      "description": "Regression +4 days"
+    },
+    {
+      "id": "C4",
+      "kind": "deadline",
+      "event": "launch",
+      "date": "2026-11-26",
+      "editable": true,
+      "source_id": "M1",
+      "description": "Launch by Nov 26"
+    },
+    {
+      "id": "C5",
+      "kind": "before_or_same",
+      "event": "regression_done",
+      "ref": "launch",
+      "source_id": "M1",
+      "description": "Regression complete by launch"
+    }
+  ],
+  "gold": {
+    "status": "UNSAT",
+    "conflict_ids": [
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "C5"
+    ]
+  }
+}

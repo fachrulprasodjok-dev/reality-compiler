@@ -1,0 +1,49 @@
+{
+  "id": "case_09",
+  "title": "Feasible approval and launch",
+  "sources": [
+    {
+      "id": "B1",
+      "text": "Business sign-off will complete on 2026-09-07."
+    },
+    {
+      "id": "P1",
+      "text": "Launch must not precede business sign-off."
+    },
+    {
+      "id": "M1",
+      "text": "Launch deadline is 2026-09-10."
+    }
+  ],
+  "gold_constraints": [
+    {
+      "id": "C1",
+      "kind": "fixed_date",
+      "event": "business_done",
+      "date": "2026-09-07",
+      "source_id": "B1",
+      "description": "Business signoff Sep 7"
+    },
+    {
+      "id": "C2",
+      "kind": "before_or_same",
+      "event": "business_done",
+      "ref": "launch",
+      "source_id": "P1",
+      "description": "Business signoff by launch"
+    },
+    {
+      "id": "C3",
+      "kind": "deadline",
+      "event": "launch",
+      "date": "2026-09-10",
+      "editable": true,
+      "source_id": "M1",
+      "description": "Launch by Sep 10"
+    }
+  ],
+  "gold": {
+    "status": "SAT",
+    "conflict_ids": []
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "id": "case_05",
+  "title": "Feasible chained delivery",
+  "sources": [
+    {
+      "id": "J1",
+      "text": "Database migration completes on 2026-11-02."
+    },
+    {
+      "id": "J2",
+      "text": "API validation completes at least 2 days after database migration."
+    },
+    {
+      "id": "M1",
+      "text": "Launch deadline is 2026-11-08, after API validation."
+    }
+  ],
+  "gold_constraints": [
+    {
+      "id": "C1",
+      "kind": "fixed_date",
+      "event": "db_done",
+      "date": "2026-11-02",
+      "source_id": "J1",
+      "description": "DB done Nov 2"
+    },
+    {
+      "id": "C2",
+      "kind": "after_days",
+      "event": "api_done",
+      "ref": "db_done",
+      "days": 2,
+      "source_id": "J2",
+      "description": "API validation +2 days"
+    },
+    {
+      "id": "C3",
+      "kind": "deadline",
+      "event": "launch",
+      "date": "2026-11-08",
+      "editable": true,
+      "source_id": "M1",
+      "description": "Launch by Nov 8"
+    },
+    {
+      "id": "C4",
+      "kind": "before_or_same",
+      "event": "api_done",
+      "ref": "launch",
+      "source_id": "M1",
+      "description": "API complete by launch"
+    }
+  ],
+  "gold": {
+    "status": "SAT",
+    "conflict_ids": []
+  }
+}

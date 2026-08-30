@@ -1,3 +1,4 @@
+import argparse
 import json
 import sys
 from pathlib import Path
@@ -20,29 +21,48 @@ from src.reality_compiler.repair import (
 from src.reality_compiler.solver import solve
 
 
-CASES_DIR = ROOT / "eval" / "cases"
-RESULTS_DIR = ROOT / "eval" / "results"
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description=(
+            "Run Reality Compiler against "
+            "a versioned frozen benchmark."
+        )
+    )
 
-RESULTS_DIR.mkdir(
-    parents=True,
-    exist_ok=True,
-)
+    parser.add_argument(
+        "--cases-dir",
+        default="eval/cases",
+        help=(
+            "Directory containing case_*.json "
+            "benchmark files."
+        ),
+    )
 
-OUTPUT_PATH = (
-    RESULTS_DIR
-    / "advanced_v0_2.jsonl"
-)
+    parser.add_argument(
+        "--output",
+        default=(
+            "eval/results/"
+            "advanced_v0_2.jsonl"
+        ),
+        help="Where to save JSONL results.",
+    )
+
+    return parser.parse_args()
 
 
 def run_case(case_path):
     with open(case_path) as f:
         case = json.load(f)
 
+    # IMPORTANT:
+    # The model receives ONLY raw sources.
     constraints = extract_constraints(
         case["sources"]
     )
 
-    result = solve(constraints)
+    result = solve(
+        constraints
+    )
 
     repair = None
 
@@ -53,36 +73,67 @@ def run_case(case_path):
             )
         )
 
-        repair = find_minimal_relaxation(
-            repairable_constraints,
-            result.unsat_core,
+        repair = (
+            find_minimal_relaxation(
+                repairable_constraints,
+                result.unsat_core,
+            )
         )
 
-    predicted_status = result.status
-    gold_status = case["gold"]["status"]
+    predicted_status = (
+        result.status
+    )
+
+    gold_status = (
+        case["gold"]["status"]
+    )
 
     return {
         "case_id": case["id"],
         "title": case["title"],
         "model": DEFAULT_MODEL,
         "gold_status": gold_status,
-        "predicted_status": predicted_status,
+        "predicted_status": (
+            predicted_status
+        ),
         "correct": (
             predicted_status
             == gold_status
         ),
         "constraints": constraints,
-        "unsat_core": result.unsat_core,
+        "unsat_core": (
+            result.unsat_core
+        ),
         "repair": repair,
     }
 
 
 def main():
-    case_paths = sorted(
-        CASES_DIR.glob("case_*.json")
+    args = parse_args()
+
+    cases_dir = (
+        ROOT / args.cases_dir
     )
 
-    total = len(case_paths)
+    output_path = (
+        ROOT / args.output
+    )
+
+    output_path.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    case_paths = sorted(
+        cases_dir.glob(
+            "case_*.json"
+        )
+    )
+
+    total = len(
+        case_paths
+    )
+
     correct = 0
     errors = 0
 
@@ -96,11 +147,18 @@ def main():
     )
 
     print(
+        "Benchmark:",
+        cases_dir.relative_to(
+            ROOT
+        ),
+    )
+
+    print(
         f"Cases: {total}\n"
     )
 
     with open(
-        OUTPUT_PATH,
+        output_path,
         "w",
     ) as output_file:
 
@@ -139,7 +197,9 @@ def main():
                     "case_id": (
                         case_path.stem
                     ),
-                    "model": DEFAULT_MODEL,
+                    "model": (
+                        DEFAULT_MODEL
+                    ),
                     "correct": False,
                     "error": (
                         f"{type(exc).__name__}: "
@@ -188,7 +248,9 @@ def main():
     )
 
     print(
-        OUTPUT_PATH.relative_to(ROOT)
+        output_path.relative_to(
+            ROOT
+        )
     )
 
 
