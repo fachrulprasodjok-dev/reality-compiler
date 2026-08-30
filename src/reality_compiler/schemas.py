@@ -4,6 +4,7 @@ ALLOWED_CONSTRAINT_KINDS = {
     "earliest",
     "after_days",
     "before_or_same",
+    "same_event",
 }
 
 
@@ -16,21 +17,31 @@ def validate_constraint(constraint):
         "description",
     }
 
-    missing = required - set(constraint.keys())
+    missing = required - set(
+        constraint.keys()
+    )
 
     if missing:
         raise ValueError(
             f"Missing required fields: {sorted(missing)}"
         )
 
-    if constraint["kind"] not in ALLOWED_CONSTRAINT_KINDS:
+    if (
+        constraint["kind"]
+        not in ALLOWED_CONSTRAINT_KINDS
+    ):
         raise ValueError(
-            f"Unsupported constraint kind: {constraint['kind']}"
+            "Unsupported constraint kind: "
+            f"{constraint['kind']}"
         )
 
     kind = constraint["kind"]
 
-    if kind in {"deadline", "fixed_date", "earliest"}:
+    if kind in {
+        "deadline",
+        "fixed_date",
+        "earliest",
+    }:
         if "date" not in constraint:
             raise ValueError(
                 f"{kind} constraint requires 'date'"
@@ -53,17 +64,30 @@ def validate_constraint(constraint):
                 "before_or_same constraint requires 'ref'"
             )
 
+    if kind == "same_event":
+        if "ref" not in constraint:
+            raise ValueError(
+                "same_event constraint requires 'ref'"
+            )
+
     return True
 
 
 def validate_constraints(constraints):
-    if not isinstance(constraints, list):
-        raise ValueError("Constraints must be a list")
+    if not isinstance(
+        constraints,
+        list,
+    ):
+        raise ValueError(
+            "Constraints must be a list"
+        )
 
     seen_ids = set()
 
     for constraint in constraints:
-        validate_constraint(constraint)
+        validate_constraint(
+            constraint
+        )
 
         cid = constraint["id"]
 
@@ -72,6 +96,8 @@ def validate_constraints(constraints):
                 f"Duplicate constraint id: {cid}"
             )
 
-        seen_ids.add(cid)
+        seen_ids.add(
+            cid
+        )
 
     return True

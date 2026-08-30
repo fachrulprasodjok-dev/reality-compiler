@@ -56,7 +56,41 @@ class SchemaValidationTests(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             validate_constraints(duplicate_constraints)
+    def test_same_event_constraint_is_valid(self):
+        constraints = [
+            {
+                "id": "C1",
+                "kind": "same_event",
+                "event": "security_review",
+                "ref": "security_approval",
+                "source_id": "P1",
+                "description": (
+                    "Completing the security review "
+                    "constitutes security approval."
+                ),
+            }
+        ]
 
+        self.assertTrue(
+            validate_constraints(constraints)
+        )
+
+    def test_same_event_without_ref_is_rejected(self):
+        constraints = [
+            {
+                "id": "C1",
+                "kind": "same_event",
+                "event": "security_review",
+                "source_id": "P1",
+                "description": (
+                    "Completing the security review "
+                    "constitutes security approval."
+                ),
+            }
+        ]
+
+        with self.assertRaises(ValueError):
+            validate_constraints(constraints)
 
 if __name__ == "__main__":
     unittest.main()

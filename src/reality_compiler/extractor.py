@@ -31,6 +31,7 @@ EXTRACTION_SCHEMA = {
                             "earliest",
                             "after_days",
                             "before_or_same",
+                            "same_event",
                         ],
                     },
                     "event": {

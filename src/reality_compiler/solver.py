@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import Dict, List, Any, Tuple
 from .date_utils import to_day, from_day
+from .canonicalizer import canonicalize_constraints
 
 ZERO = "__ZERO__"
 
@@ -97,6 +98,9 @@ def _minimal_unsat_core(constraints: List[Dict[str, Any]]) -> List[str]:
     return [c["id"] for c in core]
 
 def solve(constraints: List[Dict[str, Any]]) -> SolveResult:
+    constraints = canonicalize_constraints(
+        constraints
+    )
     feasible, model = _is_feasible(constraints)
     if not feasible:
         return SolveResult(
