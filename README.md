@@ -45,8 +45,8 @@ FEASIBILITY DECISION RECEIPT
 | Verified SAT-restoring repairs | 7/7 | 7/7 |
 | Boundary-minimal repairs | 4/7 | **7/7** |
 
-**Primary measured difference:**  
-Reality Compiler: **100% boundary-minimal**  
+**Primary measured difference:**
+Reality Compiler: **100% boundary-minimal**
 Direct LLM: **57.1% boundary-minimal**
 
 Difference: **+42.9 percentage points**
