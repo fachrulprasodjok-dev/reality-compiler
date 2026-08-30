@@ -1,0 +1,18 @@
+
+=== REALITY COMPILER ===
+Case: Challenge: green project but impossible QA window
+
+=== AI EXTRACTED CONSTRAINTS ===
+C1: deadline | Apollo must launch no later than 2026-09-30.
+C2: fixed_date | Engineering committed to code freeze on 2026-09-25.
+C3: after_days | QA completes no earlier than 7 days after code freeze.
+C4: before_or_same | QA must finish before launch.
+
+=== REALITY ENGINE ===
+STATUS: UNSAT
+UNSAT CORE: C1, C2, C3, C4
+
+=== MINIMAL REPAIR ===
+CHANGES REQUIRED: 1
+REPAIR: Move launch deadline from 2026-09-30 to at least 2026-10-02
+AFTER REPAIR: SAT
