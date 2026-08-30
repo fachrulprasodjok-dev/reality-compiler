@@ -48,18 +48,28 @@ def parse_args():
 def load_result(path, case_id):
     with open(path) as f:
         for line in f:
-            record = json.loads(
-                line
-            )
+            record = json.loads(line)
 
-            if (
-                record.get("case_id")
-                == case_id
-            ):
+            if record.get("case_id") == case_id:
                 return record
 
     raise ValueError(
         f"No result found for {case_id}"
+    )
+
+
+def clean_generated_text(value):
+    """
+    Normalize generated artifacts so repository
+    hygiene checks do not report trailing whitespace.
+    """
+
+    return (
+        "\n".join(
+            line.rstrip()
+            for line in value.splitlines()
+        ).rstrip()
+        + "\n"
     )
 
 
@@ -78,18 +88,18 @@ def main():
     )
 
     markdown = clean_generated_text(
-    render_markdown(
-        case,
-        record,
+        render_markdown(
+            case,
+            record,
+        )
     )
-)
 
-html = clean_generated_text(
-    render_html(
-        case,
-        record,
+    html = clean_generated_text(
+        render_html(
+            case,
+            record,
+        )
     )
-)
 
     markdown_path = (
         ROOT / args.markdown_output
@@ -119,35 +129,10 @@ html = clean_generated_text(
         encoding="utf-8",
     )
 
-    print(
-        "Decision receipt generated:"
-    )
-
-    print(
-        markdown_path.relative_to(
-            ROOT
-        )
-    )
-
-    print(
-        html_path.relative_to(
-            ROOT
-        )
-    )
+    print("Decision receipt generated:")
+    print(markdown_path.relative_to(ROOT))
+    print(html_path.relative_to(ROOT))
 
 
 if __name__ == "__main__":
-    def clean_generated_text(value):
-    """
-    Normalize generated artifacts so repository
-    hygiene checks do not report trailing whitespace.
-    """
-
-    return (
-        "\n".join(
-            line.rstrip()
-            for line in value.splitlines()
-        ).rstrip()
-        + "\n"
-    )
     main()
