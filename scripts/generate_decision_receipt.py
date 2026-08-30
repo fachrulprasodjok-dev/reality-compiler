@@ -77,15 +77,19 @@ def main():
         case["id"],
     )
 
-    markdown = render_markdown(
+    markdown = clean_generated_text(
+    render_markdown(
         case,
         record,
     )
+)
 
-    html = render_html(
+html = clean_generated_text(
+    render_html(
         case,
         record,
     )
+)
 
     markdown_path = (
         ROOT / args.markdown_output
@@ -133,4 +137,17 @@ def main():
 
 
 if __name__ == "__main__":
+    def clean_generated_text(value):
+    """
+    Normalize generated artifacts so repository
+    hygiene checks do not report trailing whitespace.
+    """
+
+    return (
+        "\n".join(
+            line.rstrip()
+            for line in value.splitlines()
+        ).rstrip()
+        + "\n"
+    )
     main()
