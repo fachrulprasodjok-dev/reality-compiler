@@ -1,0 +1,491 @@
+{
+  "case_id": "case_04",
+  "model": "gpt-5.6-luna",
+  "protocol": {
+    "independent_runs": 10,
+    "retries": 0,
+    "manual_corrections": 0,
+    "model_receives_gold": false
+  },
+  "summary": {
+    "runs": 10,
+    "completed": 10,
+    "errors": 0,
+    "correct_final_status": 10,
+    "explicit_same_event": 10,
+    "semantic_complete": 10,
+    "distinct_formalizations": 2
+  },
+  "rows": [
+    {
+      "run": 1,
+      "status": "UNSAT",
+      "correct": true,
+      "explicit_same_event": true,
+      "semantic_complete": true,
+      "signature": "0c19a74157d3",
+      "constraints": [
+        {
+          "id": "C1",
+          "kind": "deadline",
+          "event": "release",
+          "date": "2026-10-15",
+          "source_id": "M1",
+          "description": "Release must occur no later than 2026-10-15."
+        },
+        {
+          "id": "C2",
+          "kind": "fixed_date",
+          "event": "security_review_complete",
+          "date": "2026-10-16",
+          "source_id": "S1",
+          "description": "Security review is scheduled to complete on 2026-10-16."
+        },
+        {
+          "id": "C3",
+          "kind": "same_event",
+          "event": "security_approval",
+          "ref": "security_review_complete",
+          "source_id": "P1",
+          "description": "Completing the scheduled security review constitutes security approval."
+        },
+        {
+          "id": "C4",
+          "kind": "before_or_same",
+          "event": "security_approval",
+          "ref": "release",
+          "source_id": "P1",
+          "description": "Security approval must be complete before or on the release date."
+        }
+      ],
+      "unsat_core": [
+        "C1",
+        "C2",
+        "C4"
+      ]
+    },
+    {
+      "run": 2,
+      "status": "UNSAT",
+      "correct": true,
+      "explicit_same_event": true,
+      "semantic_complete": true,
+      "signature": "0c19a74157d3",
+      "constraints": [
+        {
+          "id": "C1",
+          "kind": "deadline",
+          "event": "release",
+          "date": "2026-10-15",
+          "source_id": "M1",
+          "description": "Release must occur no later than 2026-10-15."
+        },
+        {
+          "id": "C2",
+          "kind": "fixed_date",
+          "event": "security_review_complete",
+          "date": "2026-10-16",
+          "source_id": "S1",
+          "description": "Security review is scheduled to complete on 2026-10-16."
+        },
+        {
+          "id": "C3",
+          "kind": "same_event",
+          "event": "security_approval",
+          "ref": "security_review_complete",
+          "source_id": "P1",
+          "description": "Completing the scheduled security review constitutes security approval."
+        },
+        {
+          "id": "C4",
+          "kind": "before_or_same",
+          "event": "security_approval",
+          "ref": "release",
+          "source_id": "P1",
+          "description": "Security approval must be complete before or on the release date."
+        }
+      ],
+      "unsat_core": [
+        "C1",
+        "C2",
+        "C4"
+      ]
+    },
+    {
+      "run": 3,
+      "status": "UNSAT",
+      "correct": true,
+      "explicit_same_event": true,
+      "semantic_complete": true,
+      "signature": "0c19a74157d3",
+      "constraints": [
+        {
+          "id": "C1",
+          "kind": "deadline",
+          "event": "release",
+          "date": "2026-10-15",
+          "source_id": "M1",
+          "description": "Release must occur no later than 2026-10-15."
+        },
+        {
+          "id": "C2",
+          "kind": "fixed_date",
+          "event": "security_review_complete",
+          "date": "2026-10-16",
+          "source_id": "S1",
+          "description": "Security review is scheduled to complete on 2026-10-16."
+        },
+        {
+          "id": "C3",
+          "kind": "same_event",
+          "event": "security_approval",
+          "ref": "security_review_complete",
+          "source_id": "P1",
+          "description": "Completing the scheduled security review constitutes security approval."
+        },
+        {
+          "id": "C4",
+          "kind": "before_or_same",
+          "event": "security_approval",
+          "ref": "release",
+          "source_id": "P1",
+          "description": "Security approval must be complete before or on the release date."
+        }
+      ],
+      "unsat_core": [
+        "C1",
+        "C2",
+        "C4"
+      ]
+    },
+    {
+      "run": 4,
+      "status": "UNSAT",
+      "correct": true,
+      "explicit_same_event": true,
+      "semantic_complete": true,
+      "signature": "04f4ac9f3ee8",
+      "constraints": [
+        {
+          "id": "C1",
+          "kind": "deadline",
+          "event": "release",
+          "date": "2026-10-15",
+          "source_id": "M1",
+          "description": "Release must occur no later than 2026-10-15."
+        },
+        {
+          "id": "C2",
+          "kind": "fixed_date",
+          "event": "security_review_complete",
+          "date": "2026-10-16",
+          "source_id": "S1",
+          "description": "The security review is scheduled to complete on 2026-10-16."
+        },
+        {
+          "id": "C3",
+          "kind": "same_event",
+          "event": "security_approval",
+          "ref": "security_review_complete",
+          "source_id": "P1",
+          "description": "Completing the scheduled security review constitutes security approval."
+        },
+        {
+          "id": "C4",
+          "kind": "before_or_same",
+          "event": "security_approval",
+          "ref": "release",
+          "source_id": "P1",
+          "description": "Security approval must be complete before or on the release date."
+        }
+      ],
+      "unsat_core": [
+        "C1",
+        "C2",
+        "C4"
+      ]
+    },
+    {
+      "run": 5,
+      "status": "UNSAT",
+      "correct": true,
+      "explicit_same_event": true,
+      "semantic_complete": true,
+      "signature": "0c19a74157d3",
+      "constraints": [
+        {
+          "id": "C1",
+          "kind": "deadline",
+          "event": "release",
+          "date": "2026-10-15",
+          "source_id": "M1",
+          "description": "Release must occur no later than 2026-10-15."
+        },
+        {
+          "id": "C2",
+          "kind": "fixed_date",
+          "event": "security_review_complete",
+          "date": "2026-10-16",
+          "source_id": "S1",
+          "description": "Security review is scheduled to complete on 2026-10-16."
+        },
+        {
+          "id": "C3",
+          "kind": "same_event",
+          "event": "security_approval",
+          "ref": "security_review_complete",
+          "source_id": "P1",
+          "description": "Completing the scheduled security review constitutes security approval."
+        },
+        {
+          "id": "C4",
+          "kind": "before_or_same",
+          "event": "security_approval",
+          "ref": "release",
+          "source_id": "P1",
+          "description": "Security approval must be complete before or on the release date."
+        }
+      ],
+      "unsat_core": [
+        "C1",
+        "C2",
+        "C4"
+      ]
+    },
+    {
+      "run": 6,
+      "status": "UNSAT",
+      "correct": true,
+      "explicit_same_event": true,
+      "semantic_complete": true,
+      "signature": "0c19a74157d3",
+      "constraints": [
+        {
+          "id": "C1",
+          "kind": "deadline",
+          "event": "release",
+          "date": "2026-10-15",
+          "source_id": "M1",
+          "description": "Release must occur no later than 2026-10-15."
+        },
+        {
+          "id": "C2",
+          "kind": "fixed_date",
+          "event": "security_review_complete",
+          "date": "2026-10-16",
+          "source_id": "S1",
+          "description": "Security review is scheduled to complete on 2026-10-16."
+        },
+        {
+          "id": "C3",
+          "kind": "same_event",
+          "event": "security_approval",
+          "ref": "security_review_complete",
+          "source_id": "P1",
+          "description": "Completing the scheduled security review constitutes security approval."
+        },
+        {
+          "id": "C4",
+          "kind": "before_or_same",
+          "event": "security_approval",
+          "ref": "release",
+          "source_id": "P1",
+          "description": "Security approval must be complete before or on the release date."
+        }
+      ],
+      "unsat_core": [
+        "C1",
+        "C2",
+        "C4"
+      ]
+    },
+    {
+      "run": 7,
+      "status": "UNSAT",
+      "correct": true,
+      "explicit_same_event": true,
+      "semantic_complete": true,
+      "signature": "0c19a74157d3",
+      "constraints": [
+        {
+          "id": "C1",
+          "kind": "deadline",
+          "event": "release",
+          "date": "2026-10-15",
+          "source_id": "M1",
+          "description": "Release must occur no later than 2026-10-15."
+        },
+        {
+          "id": "C2",
+          "kind": "fixed_date",
+          "event": "security_review_complete",
+          "date": "2026-10-16",
+          "source_id": "S1",
+          "description": "Security review is scheduled to complete on 2026-10-16."
+        },
+        {
+          "id": "C3",
+          "kind": "same_event",
+          "event": "security_approval",
+          "ref": "security_review_complete",
+          "source_id": "P1",
+          "description": "Completing the scheduled security review constitutes security approval."
+        },
+        {
+          "id": "C4",
+          "kind": "before_or_same",
+          "event": "security_approval",
+          "ref": "release",
+          "source_id": "P1",
+          "description": "Security approval must be complete before or on the release date."
+        }
+      ],
+      "unsat_core": [
+        "C1",
+        "C2",
+        "C4"
+      ]
+    },
+    {
+      "run": 8,
+      "status": "UNSAT",
+      "correct": true,
+      "explicit_same_event": true,
+      "semantic_complete": true,
+      "signature": "04f4ac9f3ee8",
+      "constraints": [
+        {
+          "id": "C1",
+          "kind": "deadline",
+          "event": "release",
+          "date": "2026-10-15",
+          "source_id": "M1",
+          "description": "Release must occur no later than 2026-10-15."
+        },
+        {
+          "id": "C2",
+          "kind": "fixed_date",
+          "event": "security_review_complete",
+          "date": "2026-10-16",
+          "source_id": "S1",
+          "description": "The security review is scheduled to complete on 2026-10-16."
+        },
+        {
+          "id": "C3",
+          "kind": "same_event",
+          "event": "security_approval",
+          "ref": "security_review_complete",
+          "source_id": "P1",
+          "description": "Completing the scheduled security review constitutes security approval."
+        },
+        {
+          "id": "C4",
+          "kind": "before_or_same",
+          "event": "security_approval",
+          "ref": "release",
+          "source_id": "P1",
+          "description": "Security approval must be complete before or on the release date."
+        }
+      ],
+      "unsat_core": [
+        "C1",
+        "C2",
+        "C4"
+      ]
+    },
+    {
+      "run": 9,
+      "status": "UNSAT",
+      "correct": true,
+      "explicit_same_event": true,
+      "semantic_complete": true,
+      "signature": "04f4ac9f3ee8",
+      "constraints": [
+        {
+          "id": "C1",
+          "kind": "deadline",
+          "event": "release",
+          "date": "2026-10-15",
+          "source_id": "M1",
+          "description": "Release must occur no later than 2026-10-15."
+        },
+        {
+          "id": "C2",
+          "kind": "fixed_date",
+          "event": "security_review_complete",
+          "date": "2026-10-16",
+          "source_id": "S1",
+          "description": "The security review is scheduled to complete on 2026-10-16."
+        },
+        {
+          "id": "C3",
+          "kind": "same_event",
+          "event": "security_approval",
+          "ref": "security_review_complete",
+          "source_id": "P1",
+          "description": "Completing the scheduled security review constitutes security approval."
+        },
+        {
+          "id": "C4",
+          "kind": "before_or_same",
+          "event": "security_approval",
+          "ref": "release",
+          "source_id": "P1",
+          "description": "Security approval must be complete before or on the release date."
+        }
+      ],
+      "unsat_core": [
+        "C1",
+        "C2",
+        "C4"
+      ]
+    },
+    {
+      "run": 10,
+      "status": "UNSAT",
+      "correct": true,
+      "explicit_same_event": true,
+      "semantic_complete": true,
+      "signature": "0c19a74157d3",
+      "constraints": [
+        {
+          "id": "C1",
+          "kind": "deadline",
+          "event": "release",
+          "date": "2026-10-15",
+          "source_id": "M1",
+          "description": "Release must occur no later than 2026-10-15."
+        },
+        {
+          "id": "C2",
+          "kind": "fixed_date",
+          "event": "security_review_complete",
+          "date": "2026-10-16",
+          "source_id": "S1",
+          "description": "Security review is scheduled to complete on 2026-10-16."
+        },
+        {
+          "id": "C3",
+          "kind": "same_event",
+          "event": "security_approval",
+          "ref": "security_review_complete",
+          "source_id": "P1",
+          "description": "Completing the scheduled security review constitutes security approval."
+        },
+        {
+          "id": "C4",
+          "kind": "before_or_same",
+          "event": "security_approval",
+          "ref": "release",
+          "source_id": "P1",
+          "description": "Security approval must be complete before or on the release date."
+        }
+      ],
+      "unsat_core": [
+        "C1",
+        "C2",
+        "C4"
+      ]
+    }
+  ]
+}
