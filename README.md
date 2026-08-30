@@ -1,35 +1,35 @@
 # Reality Compiler
 
-> **Compile organizational language into a verifiable model of reality.**
+> **Your project plan sounds plausible. Is it actually possible?**
 
-Reality Compiler is a hackathon MVP that detects when a set of project commitments cannot all be true at the same time, shows the evidence-backed conflict, and proposes the smallest supported repair.
+Reality Compiler converts natural-language organizational commitments into formal constraints, proves whether they can coexist, identifies the commitments causing a contradiction, and searches for the smallest verified repair that restores feasibility.
 
-## Why this exists
+Instead of asking an LLM only:
 
-Organizations coordinate through meetings, tickets, policies, roadmaps and messages. Most tools summarize those artifacts. Reality Compiler asks a harder question:
+> “Does this plan look risky?”
 
-> **Can all of these commitments actually coexist?**
+Reality Compiler asks:
 
-The system separates language interpretation from proof:
+> **“Can all of these commitments mathematically be true at the same time?”**
+
+---
+
+## The Problem
+
+Organizations make commitments across documents, meetings, emails, plans, policies, and teams:
+
+- launch by September 30
+- code freeze on September 25
+- QA requires at least seven days after code freeze
+- QA must finish before launch
+
+Every statement sounds reasonable by itself.
+
+Together:
 
 ```text
-Evidence → Agent extraction/verification → Formal constraints → Solver
-        → SAT / UNSAT → conflict proof → minimal repair → explanation
-```
-
-## Current starter state
-
-This starter freezes the product scope and synthetic benchmark first. The deterministic formal constraint engine is executable now on gold constraints. An optional Z3 adapter is reserved for a later experiment. The next build stage is the model-backed Extraction + Verification agents operating on the same frozen raw evidence.
-
-## Setup
-
-```bash
-python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-python scripts/run_gold_solver.py
-python -m unittest discover -s tests -v
-```
-
-## Important
-Do **not** change the frozen gold labels to make later predictions look better. If the benchmark must change, version it explicitly.
+code freeze = Sep 25
+QA >= Sep 25 + 7 days
+QA >= Oct 2
+QA <= launch
+launch <= Sep 30
