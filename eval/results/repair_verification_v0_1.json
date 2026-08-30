@@ -1,0 +1,229 @@
+{
+  "definition": {
+    "verified_repair": "Applying the proposed single source-date edit to the frozen gold formal constraints results in SAT.",
+    "boundary_minimal": "No smaller day movement on that same source-date in the same direction produces SAT."
+  },
+  "rows": [
+    {
+      "case_id": "case_02",
+      "direct_llm": {
+        "source_id": "M1",
+        "original_date": "2026-09-30",
+        "new_date": "2026-10-03",
+        "explanation": "With code freeze on 2026-09-25, QA cannot complete before 2026-10-02. Moving the launch deadline to 2026-10-03 allows QA to finish on 2026-10-02 before launch.",
+        "matches": 1,
+        "resulting_status": "SAT",
+        "verified": true,
+        "proposed_days_moved": 3,
+        "minimum_days_moved": 2,
+        "minimum_date": "2026-10-02",
+        "boundary_minimal": false
+      },
+      "reality_compiler": {
+        "source_id": "M1",
+        "original_date": "2026-09-30",
+        "new_date": "2026-10-02",
+        "constraint_id": "C1",
+        "matches": 1,
+        "resulting_status": "SAT",
+        "verified": true,
+        "proposed_days_moved": 2,
+        "minimum_days_moved": 2,
+        "minimum_date": "2026-10-02",
+        "boundary_minimal": true
+      }
+    },
+    {
+      "case_id": "case_03",
+      "direct_llm": {
+        "source_id": "V1",
+        "original_date": "2026-10-11",
+        "new_date": "2026-10-09",
+        "explanation": "Moving vendor migration completion two days earlier allows the launch to occur by 2026-10-10 while still satisfying the requirement that launch occur only after migration completes.",
+        "matches": 1,
+        "resulting_status": "SAT",
+        "verified": true,
+        "proposed_days_moved": 2,
+        "minimum_days_moved": 1,
+        "minimum_date": "2026-10-10",
+        "boundary_minimal": false
+      },
+      "reality_compiler": {
+        "source_id": "M1",
+        "original_date": "2026-10-10",
+        "new_date": "2026-10-11",
+        "constraint_id": "C1",
+        "matches": 1,
+        "resulting_status": "SAT",
+        "verified": true,
+        "proposed_days_moved": 1,
+        "minimum_days_moved": 1,
+        "minimum_date": "2026-10-11",
+        "boundary_minimal": true
+      }
+    },
+    {
+      "case_id": "case_04",
+      "direct_llm": {
+        "source_id": "M1",
+        "original_date": "2026-10-15",
+        "new_date": "2026-10-16",
+        "explanation": "Extending the release deadline by one day allows the scheduled security review to complete on 2026-10-16, satisfying the requirement that security approval be complete on or before the release date.",
+        "matches": 1,
+        "resulting_status": "SAT",
+        "verified": true,
+        "proposed_days_moved": 1,
+        "minimum_days_moved": 1,
+        "minimum_date": "2026-10-16",
+        "boundary_minimal": true
+      },
+      "reality_compiler": {
+        "source_id": "M1",
+        "original_date": "2026-10-15",
+        "new_date": "2026-10-16",
+        "constraint_id": "C1",
+        "matches": 1,
+        "resulting_status": "SAT",
+        "verified": true,
+        "proposed_days_moved": 1,
+        "minimum_days_moved": 1,
+        "minimum_date": "2026-10-16",
+        "boundary_minimal": true
+      }
+    },
+    {
+      "case_id": "case_06",
+      "direct_llm": {
+        "source_id": "J1",
+        "original_date": "2026-11-20",
+        "new_date": "2026-11-18",
+        "explanation": "Moving feature complete two days earlier allows integration testing to complete by 2026-11-22 and regression completion by 2026-11-26, meeting the launch deadline.",
+        "matches": 1,
+        "resulting_status": "SAT",
+        "verified": true,
+        "proposed_days_moved": 2,
+        "minimum_days_moved": 2,
+        "minimum_date": "2026-11-18",
+        "boundary_minimal": true
+      },
+      "reality_compiler": {
+        "source_id": "M1",
+        "original_date": "2026-11-26",
+        "new_date": "2026-11-28",
+        "constraint_id": "C4",
+        "matches": 1,
+        "resulting_status": "SAT",
+        "verified": true,
+        "proposed_days_moved": 2,
+        "minimum_days_moved": 2,
+        "minimum_date": "2026-11-28",
+        "boundary_minimal": true
+      }
+    },
+    {
+      "case_id": "case_08",
+      "direct_llm": {
+        "source_id": "CEO1",
+        "original_date": "2026-12-10",
+        "new_date": "2026-12-12",
+        "explanation": "Campaign assets cannot be ready before 2026-12-12, and the launch must occur after assets are ready. Moving the executive deadline to 2026-12-12 removes the conflict with the earliest feasible launch date.",
+        "matches": 1,
+        "resulting_status": "SAT",
+        "verified": true,
+        "proposed_days_moved": 2,
+        "minimum_days_moved": 2,
+        "minimum_date": "2026-12-12",
+        "boundary_minimal": true
+      },
+      "reality_compiler": {
+        "source_id": "CEO1",
+        "original_date": "2026-12-10",
+        "new_date": "2026-12-12",
+        "constraint_id": "C3",
+        "matches": 1,
+        "resulting_status": "SAT",
+        "verified": true,
+        "proposed_days_moved": 2,
+        "minimum_days_moved": 2,
+        "minimum_date": "2026-12-12",
+        "boundary_minimal": true
+      }
+    },
+    {
+      "case_id": "case_10",
+      "direct_llm": {
+        "source_id": "M1",
+        "original_date": "2026-09-17",
+        "new_date": "2026-09-19",
+        "explanation": "Moving the production launch deadline to 2026-09-19 allows production launch to occur after the fixed 2026-09-18 cutover rehearsal, with the smallest practical two-day adjustment.",
+        "matches": 1,
+        "resulting_status": "SAT",
+        "verified": true,
+        "proposed_days_moved": 2,
+        "minimum_days_moved": 1,
+        "minimum_date": "2026-09-18",
+        "boundary_minimal": false
+      },
+      "reality_compiler": {
+        "source_id": "M1",
+        "original_date": "2026-09-17",
+        "new_date": "2026-09-18",
+        "constraint_id": "C3",
+        "matches": 1,
+        "resulting_status": "SAT",
+        "verified": true,
+        "proposed_days_moved": 1,
+        "minimum_days_moved": 1,
+        "minimum_date": "2026-09-18",
+        "boundary_minimal": true
+      }
+    },
+    {
+      "case_id": "case_12",
+      "direct_llm": {
+        "source_id": "A5",
+        "original_date": "2026-10-24",
+        "new_date": "2026-10-25",
+        "explanation": "Moving the launch deadline to 2026-10-25 allows 3 days for reconciliation after migration completes on 2026-10-20, followed by 2 days for business validation.",
+        "matches": 1,
+        "resulting_status": "SAT",
+        "verified": true,
+        "proposed_days_moved": 1,
+        "minimum_days_moved": 1,
+        "minimum_date": "2026-10-25",
+        "boundary_minimal": true
+      },
+      "reality_compiler": {
+        "source_id": "A5",
+        "original_date": "2026-10-24",
+        "new_date": "2026-10-25",
+        "constraint_id": "C5",
+        "matches": 1,
+        "resulting_status": "SAT",
+        "verified": true,
+        "proposed_days_moved": 1,
+        "minimum_days_moved": 1,
+        "minimum_date": "2026-10-25",
+        "boundary_minimal": true
+      }
+    }
+  ],
+  "summary": {
+    "direct_llm": {
+      "cases": 7,
+      "verified_repairs": 7,
+      "verified_rate": 1.0,
+      "boundary_minimal_repairs": 4,
+      "boundary_minimal_rate": 0.5714285714285714,
+      "mean_days_moved": 1.8571428571428572
+    },
+    "reality_compiler": {
+      "cases": 7,
+      "verified_repairs": 7,
+      "verified_rate": 1.0,
+      "boundary_minimal_repairs": 7,
+      "boundary_minimal_rate": 1.0,
+      "mean_days_moved": 1.4285714285714286
+    }
+  }
+}
