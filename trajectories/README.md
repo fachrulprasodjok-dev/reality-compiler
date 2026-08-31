@@ -58,13 +58,32 @@ Representative trajectory:
 
 `03_repair_evaluation_and_verification.md`
 
-## Human checkpoints
+## Agent coverage and deterministic components
 
+The submitted trajectories distinguish model-backed or development-agent activity from deterministic runtime software.
+
+- **Constraint Extraction Agent** — model-backed and probabilistic; proposes formal constraints from natural-language evidence.
+- **Coding / Engineering Agent Workflow** — development-time agent workflow used to diagnose the Case 04 failure, test alternatives, implement the retained fix, and validate it.
+- **Direct LLM repair baseline / evaluation workflow** — model-backed evaluation comparator used for the fair baseline comparison.
+- **Semantic critic** — experimental model-backed approach evaluated during the Case 04 investigation and not retained in the final system; documented in the Case 04 failure-and-fix trajectory.
+
+The following runtime components are deterministic software modules, not agents:
+
+- schema validation
+- semantic canonicalization
+- SAT / UNSAT solving
+- conflict-core computation
+- repair search
+- complete-system re-solving
+- Decision Receipt generation
+
+Artificial agent trajectories are not created for deterministic software modules.
+
+## Human checkpoints
 Human approval remained in the loop for:
 
-- accepting benchmark corrections
+- reviewing benchmark validity and freezing evaluation versions before final comparison
 - deciding whether an observed failure was a model defect or benchmark defect
-- freezing evaluation versions
 - choosing which claims were sufficiently supported for the submission
 - Git commits and pushes
 

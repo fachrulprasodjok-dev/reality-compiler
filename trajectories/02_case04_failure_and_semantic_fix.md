@@ -24,7 +24,7 @@ incorrect result
 
 → regression tests
 
-→ corrected end-to-end result
+→ post-fix model-backed result
 
 ## Initial benchmark state
 

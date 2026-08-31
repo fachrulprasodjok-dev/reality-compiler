@@ -945,6 +945,10 @@ Case 04 exposed the deeper boundary:
 
 That is the frontier Reality Compiler explores.
 
+## Reproduction
+
+For clean-environment setup, exact baseline, solution, and evaluation procedures, expected outputs, versions, runtime, and cost notes, see [REPRODUCTION.md](REPRODUCTION.md).
+
 ---
 
 ## One-line summary
